@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".LoginActivity">
-    
+    tools:context=".RegisterActivity">
+
     <TextView
         android:id="@+id/label_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Halo!"
+        android:text="Selamat Datang!"
         android:textSize="32sp"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -26,10 +26,24 @@
         android:id="@+id/label_subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Masuk dengan ussername dan password"
+        android:text="Buat akun dengan nama, username dan password"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/label_title"
+        />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:hint="Name"
+        android:textSize="16sp"
+        android:background="@drawable/border_edit"
+        android:padding="15dp"
+        android:drawableStart="@drawable/ic_person"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_subtitle"
         />
 
 
@@ -37,14 +51,14 @@
         android:id="@+id/edit_username"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:hint="Username"
         android:textSize="16sp"
         android:background="@drawable/border_edit"
         android:padding="15dp"
         android:drawableStart="@drawable/ic_person"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/label_subtitle"
+        app:layout_constraintTop_toBottomOf="@id/edit_name"
         />
 
     <EditText
@@ -70,7 +84,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Login gagal! Periksa kembali username dan password anda!"
+        android:text="Username sudah digunakan"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="16sp"
         android:gravity="center"
@@ -80,12 +94,12 @@
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_login"
+        android:id="@+id/button_register"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="2dp"
-        android:text="MASUK"
+        android:text="BUAT AKUN"
         android:textColor="@color/white"
         app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,14 +114,14 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_login"/>
+        app:layout_constraintTop_toBottomOf="@id/button_register"/>
 
     <TextView
-        android:id="@+id/label_register"
+        android:id="@+id/label_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="belum punya akun?"
+        android:text="sudah punya akun?"
         android:textSize="16sp"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,15 +130,15 @@
 
 
     <TextView
-        android:id="@+id/text_register"
+        android:id="@+id/text_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="buat akun"
+        android:text="masuk"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:gravity="center"
-        app:layout_constraintStart_toEndOf="@id/label_register"
+        app:layout_constraintStart_toEndOf="@id/label_login"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 

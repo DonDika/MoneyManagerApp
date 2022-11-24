@@ -3,11 +3,11 @@ package com.dondika.moneymanagerapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.dondika.moneymanagerapp.databinding.ActivityLoginBinding
+import com.dondika.moneymanagerapp.databinding.ActivityRegisterBinding
 
-class LoginActivity : BaseActivity() {
+class RegisterActivity : BaseActivity() {
 
-    private val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityRegisterBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,11 +16,13 @@ class LoginActivity : BaseActivity() {
         setupListener()
     }
 
+
     private fun setupListener() {
-        binding.textRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+        binding.textLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 
     }
+
 }
