@@ -13,7 +13,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/avatar">
-        <include layout="@layout/home_dashboard"/>
+        <include
+            android:id="@+id/include_dashboard"
+            layout="@layout/home_dashboard"
+            />
     </FrameLayout>
 
     <FrameLayout
@@ -22,7 +25,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <include layout="@layout/home_avatar"/>
+        <include
+            android:id="@+id/include_avatar"
+            layout="@layout/home_avatar"
+            />
     </FrameLayout>
 
     <TextView
