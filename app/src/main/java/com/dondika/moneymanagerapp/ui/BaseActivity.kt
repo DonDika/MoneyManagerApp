@@ -1,4 +1,4 @@
-package com.dondika.moneymanagerapp
+package com.dondika.moneymanagerapp.ui
 
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity

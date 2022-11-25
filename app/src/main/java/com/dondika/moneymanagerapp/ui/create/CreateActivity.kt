@@ -1,7 +1,7 @@
-package com.dondika.moneymanagerapp
+package com.dondika.moneymanagerapp.ui.create
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dondika.moneymanagerapp.ui.BaseActivity
 import com.dondika.moneymanagerapp.databinding.ActivityCreateBinding
 
 class CreateActivity : BaseActivity() {

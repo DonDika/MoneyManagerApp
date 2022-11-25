@@ -1,11 +1,10 @@
-package com.dondika.moneymanagerapp.fragment
+package com.dondika.moneymanagerapp.ui.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dondika.moneymanagerapp.AvatarAdapter
 import com.dondika.moneymanagerapp.R
 import com.dondika.moneymanagerapp.databinding.FragmentAvatarBinding
 

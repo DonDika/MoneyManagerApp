@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.dondika.moneymanagerapp.fragment.ProfileFragment"
+        android:name="com.dondika.moneymanagerapp.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/avatarFragment"
-        android:name="com.dondika.moneymanagerapp.fragment.AvatarFragment"
+        android:name="com.dondika.moneymanagerapp.ui.profile.AvatarFragment"
         android:label="fragment_avatar"
         tools:layout="@layout/fragment_avatar" />
 

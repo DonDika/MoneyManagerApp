@@ -1,4 +1,4 @@
-package com.dondika.moneymanagerapp.fragment
+package com.dondika.moneymanagerapp.ui.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

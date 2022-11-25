@@ -1,4 +1,4 @@
-package com.dondika.moneymanagerapp
+package com.dondika.moneymanagerapp.ui.profile
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

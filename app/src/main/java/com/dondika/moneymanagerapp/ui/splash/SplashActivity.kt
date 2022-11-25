@@ -1,10 +1,13 @@
-package com.dondika.moneymanagerapp
+package com.dondika.moneymanagerapp.ui.splash
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.dondika.moneymanagerapp.ui.BaseActivity
+import com.dondika.moneymanagerapp.R
+import com.dondika.moneymanagerapp.ui.home.HomeActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseActivity() {

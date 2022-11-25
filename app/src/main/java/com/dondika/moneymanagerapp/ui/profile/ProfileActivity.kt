@@ -1,7 +1,8 @@
-package com.dondika.moneymanagerapp
+package com.dondika.moneymanagerapp.ui.profile
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dondika.moneymanagerapp.ui.BaseActivity
+import com.dondika.moneymanagerapp.R
 
 class ProfileActivity : BaseActivity() {
 

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".ui.home.HomeActivity">
 
     <FrameLayout
         android:id="@+id/dashboard"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
-        tools:text="Transaksi terbaru"
+        android:text="Transaksi terbaru"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/white"
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        tools:text="Lihat semua"
+        android:text="Lihat semua"
         android:textSize="16sp"
         android:textColor="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +59,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_transaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

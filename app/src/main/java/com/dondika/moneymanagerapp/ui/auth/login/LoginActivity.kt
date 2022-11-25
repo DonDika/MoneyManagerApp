@@ -1,8 +1,9 @@
-package com.dondika.moneymanagerapp
+package com.dondika.moneymanagerapp.ui.auth.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dondika.moneymanagerapp.ui.BaseActivity
+import com.dondika.moneymanagerapp.ui.auth.register.RegisterActivity
 import com.dondika.moneymanagerapp.databinding.ActivityLoginBinding
 
 class LoginActivity : BaseActivity() {
