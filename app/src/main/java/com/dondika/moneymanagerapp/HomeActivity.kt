@@ -30,6 +30,10 @@ class HomeActivity : BaseActivity() {
 
 
     private fun setupListener() {
+        bindingAvatar.imageAvatar.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+
+        }
         binding.fabCreate.setOnClickListener {
             startActivity(Intent(this, CreateActivity::class.java))
         }
