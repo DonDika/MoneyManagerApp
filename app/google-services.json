@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "816347826033",
+    "project_id": "money-manager-15bc7",
+    "storage_bucket": "money-manager-15bc7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816347826033:android:db7da7c3b463320b2698d0",
+        "android_client_info": {
+          "package_name": "com.dondika.moneymanagerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "816347826033-qsgo9fj8m3suhjgusbd1ue04av9a4jd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH3p6H252Q-eZahSD0dM5DNvOPUXtvGzA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "816347826033-qsgo9fj8m3suhjgusbd1ue04av9a4jd6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
