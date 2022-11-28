@@ -103,14 +103,14 @@ class LoginActivity : BaseActivity() {
 
     private fun saveSession(user: User){
         //save data using preferences
-        pref.put("pref_is_login", 1)
-        pref.put("pref_name", user.name)
-        pref.put("pref_username", user.username)
-        pref.put("pref_password", user.password)
-        pref.put("pref_date", Utils.timestampToString(user.created)!!)
+        pref.put(Utils.PREF_IS_LOGIN, 1)
+        pref.put(Utils.PREF_NAME, user.name)
+        pref.put(Utils.PREF_USERNAME, user.username)
+        pref.put(Utils.PREF_PASSWORD, user.password)
+        pref.put(Utils.PREF_DATE, Utils.timestampToString(user.created)!!)
 
-        if (pref.getInt("pref_avatar") == 0){
-            pref.put("pref_avatar", R.drawable.avatar1)
+        if (pref.getInt(Utils.PREF_AVATAR) == 0){
+            pref.put(Utils.PREF_AVATAR, R.drawable.avatar1)
         }
     }
 
