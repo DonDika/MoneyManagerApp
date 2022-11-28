@@ -5,10 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.dondika.moneymanagerapp.R
+import com.dondika.moneymanagerapp.data.local.PreferenceManager
 import com.dondika.moneymanagerapp.data.model.User
 import com.dondika.moneymanagerapp.ui.BaseActivity
 import com.dondika.moneymanagerapp.ui.auth.register.RegisterActivity
 import com.dondika.moneymanagerapp.databinding.ActivityLoginBinding
+import com.dondika.moneymanagerapp.ui.home.HomeActivity
+import com.dondika.moneymanagerapp.utils.timestampToString
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -17,6 +21,8 @@ class LoginActivity : BaseActivity() {
 
     private val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
     private val firestore by lazy { Firebase.firestore }
+    private val pref by lazy { PreferenceManager(this) }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +69,9 @@ class LoginActivity : BaseActivity() {
                         )
                         saveSession(userData)
                     }
-                    Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "welcome !", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
                 }
             }
     }
@@ -94,7 +102,17 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun saveSession(user: User){
-        Log.e("userData", user.toString())
+        //Log.e("userData", user.toString())
+        //save data using preferences
+        pref.put("pref_is_login", 1)
+        pref.put("pref_name", user.name)
+        pref.put("pref_username", user.username)
+        pref.put("pref_password", user.password)
+        pref.put("pref_date", timestampToString(user.created)!!)
+
+        if (pref.getInt("pref_avatar") == 0){
+            pref.put("pref_avatar", R.drawable.avatar1)
+        }
     }
 
 
