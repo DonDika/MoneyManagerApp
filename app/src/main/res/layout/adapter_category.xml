@@ -10,9 +10,8 @@
     android:layout_marginHorizontal="4dp"
     android:layout_marginVertical="2dp"
     android:textColor="@color/white"
-    app:backgroundTint="@android:color/darker_gray"
-    tools:backgroundTint="@color/teal_200"
+    android:backgroundTint="@android:color/darker_gray"
+    tools:backgroundTint="@color/teal_700"
     app:cornerRadius="10dp"
-
     />
 

@@ -13,13 +13,11 @@ class TransactionAdapter(
     var listener: AdapterListener?
 ) : RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
 
-
-    inner class ViewHolder(val binding: AdapterTransactionBinding): RecyclerView.ViewHolder(binding.root) {
-
-    }
-
-    interface AdapterListener {
-        fun onClick(transaction: Transaction)
+    //add data
+    fun setData(dataTransaction: List<Transaction>){
+        transactions.clear()
+        transactions.addAll(dataTransaction)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -53,6 +51,15 @@ class TransactionAdapter(
     override fun getItemCount(): Int {
         return transactions.size
     }
+
+    inner class ViewHolder(val binding: AdapterTransactionBinding): RecyclerView.ViewHolder(binding.root) {
+
+    }
+
+    interface AdapterListener {
+        fun onClick(transaction: Transaction)
+    }
+
 
 
 }
