@@ -3,6 +3,7 @@ package com.dondika.moneymanagerapp.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import com.dondika.moneymanagerapp.data.local.PreferenceManager
 import com.dondika.moneymanagerapp.data.model.Category
 import com.dondika.moneymanagerapp.ui.BaseActivity
 import com.dondika.moneymanagerapp.ui.create.CreateActivity
@@ -11,9 +12,9 @@ import com.dondika.moneymanagerapp.databinding.HomeAvatarBinding
 import com.dondika.moneymanagerapp.databinding.HomeDashboardBinding
 import com.dondika.moneymanagerapp.ui.profile.ProfileActivity
 import com.dondika.moneymanagerapp.ui.transaction.TransactionActivity
+import com.dondika.moneymanagerapp.utils.Utils
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlin.math.log
 
 
 class HomeActivity : BaseActivity() {
@@ -23,6 +24,7 @@ class HomeActivity : BaseActivity() {
     private lateinit var bindingDashboard: HomeDashboardBinding
 
     private val firestore by lazy { Firebase.firestore }
+    private val pref by lazy { PreferenceManager(this) }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +40,12 @@ class HomeActivity : BaseActivity() {
         super.onStart()
 
         testFirestore()
+        getAvatar()
+    }
+
+    private fun getAvatar() {
+        bindingAvatar.textAvatar.text = pref.getString(Utils.PREF_NAME)
+        bindingAvatar.imageAvatar.setImageResource(pref.getInt(Utils.PREF_AVATAR)!!)
     }
 
     private fun testFirestore() {

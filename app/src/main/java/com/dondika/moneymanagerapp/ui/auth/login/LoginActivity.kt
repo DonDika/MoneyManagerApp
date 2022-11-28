@@ -12,7 +12,7 @@ import com.dondika.moneymanagerapp.ui.BaseActivity
 import com.dondika.moneymanagerapp.ui.auth.register.RegisterActivity
 import com.dondika.moneymanagerapp.databinding.ActivityLoginBinding
 import com.dondika.moneymanagerapp.ui.home.HomeActivity
-import com.dondika.moneymanagerapp.utils.timestampToString
+import com.dondika.moneymanagerapp.utils.Utils
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -102,13 +102,12 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun saveSession(user: User){
-        //Log.e("userData", user.toString())
         //save data using preferences
         pref.put("pref_is_login", 1)
         pref.put("pref_name", user.name)
         pref.put("pref_username", user.username)
         pref.put("pref_password", user.password)
-        pref.put("pref_date", timestampToString(user.created)!!)
+        pref.put("pref_date", Utils.timestampToString(user.created)!!)
 
         if (pref.getInt("pref_avatar") == 0){
             pref.put("pref_avatar", R.drawable.avatar1)

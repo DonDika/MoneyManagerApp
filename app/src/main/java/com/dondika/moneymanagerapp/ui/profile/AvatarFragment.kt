@@ -5,16 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.dondika.moneymanagerapp.R
+import com.dondika.moneymanagerapp.data.local.PreferenceManager
 import com.dondika.moneymanagerapp.databinding.FragmentAvatarBinding
+import com.dondika.moneymanagerapp.utils.Utils
 
 class AvatarFragment : Fragment() {
 
     private lateinit var binding: FragmentAvatarBinding
     private lateinit var avatarAdapter: AvatarAdapter
+    private val pref by lazy { PreferenceManager(requireContext()) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         binding = FragmentAvatarBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -40,8 +43,9 @@ class AvatarFragment : Fragment() {
         )
         avatarAdapter = AvatarAdapter(avatarData, object : AvatarAdapter.AdapterListener{
             override fun onClick(avatar: Int) {
-                //ambil data avatar
-
+                //save new avatar
+                pref.put(Utils.PREF_AVATAR, avatar)
+                findNavController().navigateUp() //back to previous fragment
             }
         })
         binding.listAvatar.adapter = avatarAdapter

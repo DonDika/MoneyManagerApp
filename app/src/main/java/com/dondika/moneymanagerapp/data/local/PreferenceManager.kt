@@ -16,6 +16,9 @@ class PreferenceManager(context: Context) {
     }
 
     //helper
+    /*
+    put for save
+    */
     fun put(key: String, value: String){
         editor.putString(key, value).apply()
     }
@@ -24,6 +27,9 @@ class PreferenceManager(context: Context) {
         editor.putInt(key, value).apply()
     }
 
+    /*
+    get for get data
+    */
     fun getString(key: String): String?{
         return sharedPreferences.getString(key, "")
     }
@@ -32,6 +38,9 @@ class PreferenceManager(context: Context) {
         return sharedPreferences.getInt(key, 0)
     }
 
+    /*
+    delete data
+    */
     fun clear(){
         editor.putInt("pref_is_login", 0).apply()
     }
