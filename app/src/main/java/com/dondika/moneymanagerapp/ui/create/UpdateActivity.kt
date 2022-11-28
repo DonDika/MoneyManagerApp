@@ -16,7 +16,7 @@ class UpdateActivity : BaseActivity() {
     }
 
     private fun setupListener() {
-        binding.buttonSave.text = "Simpan Perubahan"
+        //binding.buttonSave.text = "Simpan Perubahan"
 
     }
 
