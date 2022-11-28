@@ -29,6 +29,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupListener()
+
     }
 
     override fun onStart() {
@@ -43,6 +44,8 @@ class ProfileFragment : Fragment() {
         binding.textName.text = pref.getString(Utils.PREF_NAME)
         binding.textUsername.text = pref.getString(Utils.PREF_USERNAME)
         binding.textDate.text = pref.getString(Utils.PREF_DATE)
+
+        binding.textBalance.text = requireActivity().intent.getStringExtra("balance")
     }
 
     private fun setupListener() {

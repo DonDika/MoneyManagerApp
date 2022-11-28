@@ -1,6 +1,8 @@
 package com.dondika.moneymanagerapp.utils
 
 import com.google.firebase.Timestamp
+import java.text.DecimalFormat
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -14,7 +16,6 @@ object Utils {
     const val PREF_AVATAR = "pref_avatar"
 
 
-
     fun timestampToString(timestamp: Timestamp): String? {
         return if (timestamp != null){
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -23,5 +24,12 @@ object Utils {
             null
         }
     }
+
+    fun amountFormat(number: Int): String{
+        val numberFormat: NumberFormat = DecimalFormat("#,###")
+        return numberFormat.format(number)
+    }
+
+
 
 }

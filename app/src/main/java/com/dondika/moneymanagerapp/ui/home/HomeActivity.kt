@@ -41,6 +41,28 @@ class HomeActivity : BaseActivity() {
 
         testFirestore()
         getAvatar()
+        getBalance()
+    }
+
+    private fun getBalance() {
+        var totalBalance = 0
+        var totalIn = 0
+        var totalOut = 0
+        firestore.collection("transaction")
+            .whereEqualTo("username", pref.getString(Utils.PREF_USERNAME))
+            .get()
+            .addOnSuccessListener { result ->
+                result.forEach { doc ->
+                    totalBalance += doc.data["amount"].toString().toInt()
+                    when(doc.data["type"].toString()){
+                        "IN" -> totalIn += doc.data["amount"].toString().toInt()
+                        "OUT" -> totalOut += doc.data["amount"].toString().toInt()
+                    }
+                }
+                bindingDashboard.textBalance.text = Utils.amountFormat(totalBalance)
+                bindingDashboard.textIncome.text = Utils.amountFormat(totalIn)
+                bindingDashboard.textOutcome.text = Utils.amountFormat(totalOut)
+            }
     }
 
     private fun getAvatar() {
@@ -71,7 +93,9 @@ class HomeActivity : BaseActivity() {
 
     private fun setupListener() {
         bindingAvatar.imageAvatar.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+            val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra("balance", bindingDashboard.textBalance.text.toString())
+            startActivity(intent)
         }
         binding.fabCreate.setOnClickListener {
             startActivity(Intent(this, CreateActivity::class.java))

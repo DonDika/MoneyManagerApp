@@ -8,7 +8,7 @@ class PreferenceManager(context: Context) {
     //instance
     private val PREF_NAME = "moneyManager.pref"
     private var sharedPreferences: SharedPreferences
-    val editor: SharedPreferences.Editor
+    private val editor: SharedPreferences.Editor
 
     init {
         sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
