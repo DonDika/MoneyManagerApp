@@ -100,14 +100,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
         android:hint="Catatan"
-        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_amount"
         />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_login"
+        android:id="@+id/button_save"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginTop="5dp"

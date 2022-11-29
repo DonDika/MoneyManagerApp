@@ -1,4 +1,4 @@
-package com.dondika.moneymanagerapp.ui.transaction
+package com.dondika.moneymanagerapp.ui.create
 
 import android.content.Context
 import android.view.LayoutInflater

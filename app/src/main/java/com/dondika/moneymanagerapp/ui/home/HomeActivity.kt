@@ -38,27 +38,27 @@ class HomeActivity : BaseActivity() {
         setupListener()
         setupList()
 
-        //testFirestore()
     }
 
 
     override fun onStart() {
         super.onStart()
 
-        testFirestore()
         getAvatar()
         getBalance()
         getTransaction()
     }
 
+
+
     private fun getTransaction() {
-        binding.progress.visibility = View.VISIBLE
+        progress(true)
         val transactions: ArrayList<Transaction> = arrayListOf()
         firestore.collection("transaction")
             .whereEqualTo("username", pref.getString(Utils.PREF_USERNAME))
             .get()
             .addOnSuccessListener { result ->
-                binding.progress.visibility = View.GONE
+                progress(false)
                 result.forEach { doc ->
                     val transactionData = Transaction(
                         //id document
@@ -108,19 +108,6 @@ class HomeActivity : BaseActivity() {
         bindingAvatar.imageAvatar.setImageResource(pref.getInt(Utils.PREF_AVATAR)!!)
     }
 
-    private fun testFirestore() {
-        val categories: ArrayList<Category> = arrayListOf()
-        firestore.collection("category")
-            .get()
-            .addOnSuccessListener { result ->
-                result.forEach { document ->
-                    //Log.e("getdata", document.data["name"].toString() )
-                    categories.add( Category(document.data["name"].toString()) )
-                }
-                Log.e("getdata", "categories = $categories" )
-            }
-
-    }
 
     private fun setupBinding() {
         setContentView(binding.root)
@@ -143,5 +130,15 @@ class HomeActivity : BaseActivity() {
         }
     }
 
+
+    private fun progress(isLoading: Boolean){
+        if (isLoading){
+            binding.progress.visibility = View.VISIBLE
+            binding.listTransaction.visibility = View.INVISIBLE
+        } else {
+            binding.progress.visibility = View.GONE
+            binding.listTransaction.visibility = View.VISIBLE
+        }
+    }
 
 }
