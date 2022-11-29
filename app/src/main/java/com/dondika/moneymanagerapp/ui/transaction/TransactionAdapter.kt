@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dondika.moneymanagerapp.R
 import com.dondika.moneymanagerapp.data.model.Transaction
 import com.dondika.moneymanagerapp.databinding.AdapterTransactionBinding
+import com.dondika.moneymanagerapp.utils.Utils
 import kotlin.collections.ArrayList
 
 class TransactionAdapter(
@@ -38,8 +39,8 @@ class TransactionAdapter(
 
             textNote.text = transaction.note
             textCategory.text = transaction.category
-            textAmount.text = transaction.amount.toString()
-            textDate.text = transaction.created.toString()
+            textAmount.text = Utils.amountFormat(transaction.amount)
+            textDate.text = Utils.timestampToString(transaction.created!!)
 
             container.setOnClickListener {
                 listener?.onClick(transaction)

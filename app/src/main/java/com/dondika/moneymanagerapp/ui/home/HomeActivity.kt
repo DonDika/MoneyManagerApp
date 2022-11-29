@@ -3,8 +3,10 @@ package com.dondika.moneymanagerapp.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.dondika.moneymanagerapp.data.local.PreferenceManager
 import com.dondika.moneymanagerapp.data.model.Category
+import com.dondika.moneymanagerapp.data.model.Transaction
 import com.dondika.moneymanagerapp.ui.BaseActivity
 import com.dondika.moneymanagerapp.ui.create.CreateActivity
 import com.dondika.moneymanagerapp.databinding.ActivityHomeBinding
@@ -12,7 +14,9 @@ import com.dondika.moneymanagerapp.databinding.HomeAvatarBinding
 import com.dondika.moneymanagerapp.databinding.HomeDashboardBinding
 import com.dondika.moneymanagerapp.ui.profile.ProfileActivity
 import com.dondika.moneymanagerapp.ui.transaction.TransactionActivity
+import com.dondika.moneymanagerapp.ui.transaction.TransactionAdapter
 import com.dondika.moneymanagerapp.utils.Utils
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -22,6 +26,7 @@ class HomeActivity : BaseActivity() {
     private val binding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
     private lateinit var bindingAvatar: HomeAvatarBinding
     private lateinit var bindingDashboard: HomeDashboardBinding
+    private lateinit var transactionAdapter: TransactionAdapter
 
     private val firestore by lazy { Firebase.firestore }
     private val pref by lazy { PreferenceManager(this) }
@@ -29,12 +34,13 @@ class HomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setupBinding()
         setupListener()
+        setupList()
 
-        testFirestore()
+        //testFirestore()
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -42,6 +48,38 @@ class HomeActivity : BaseActivity() {
         testFirestore()
         getAvatar()
         getBalance()
+        getTransaction()
+    }
+
+    private fun getTransaction() {
+        binding.progress.visibility = View.VISIBLE
+        val transactions: ArrayList<Transaction> = arrayListOf()
+        firestore.collection("transaction")
+            .whereEqualTo("username", pref.getString(Utils.PREF_USERNAME))
+            .get()
+            .addOnSuccessListener { result ->
+                binding.progress.visibility = View.GONE
+                result.forEach { doc ->
+                    val transactionData = Transaction(
+                        //id document
+                        doc.reference.id,
+                        doc.data["username"].toString(),
+                        doc.data["category"].toString(),
+                        doc.data["type"].toString(),
+                        doc.data["amount"].toString().toInt(),
+                        doc.data["note"].toString(),
+                        doc.data["created"] as Timestamp
+                    )
+                    transactions.add(transactionData)
+                }
+                transactionAdapter.setData(transactions)
+            }
+    }
+
+
+    private fun setupList() {
+        transactionAdapter = TransactionAdapter(arrayListOf(), null)
+        binding.listTransaction.adapter = transactionAdapter
     }
 
     private fun getBalance() {
