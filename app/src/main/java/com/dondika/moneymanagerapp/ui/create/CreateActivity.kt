@@ -54,13 +54,13 @@ class CreateActivity : BaseActivity() {
         binding.buttonSave.setOnClickListener {
             progress(true)
             val addTransactionData = Transaction(
-                null,
-                pref.getString(Utils.PREF_USERNAME)!!,
-                chooseCategory,
-                type,
-                binding.editAmount.text.toString().toInt(),
-                binding.editNote.text.toString(),
-                Timestamp.now()
+                id = null,
+                username = pref.getString(Utils.PREF_USERNAME)!!,
+                category = chooseCategory,
+                type = type,
+                amount = binding.editAmount.text.toString().toInt(),
+                note = binding.editNote.text.toString(),
+                created = Timestamp.now()
             )
             //add to firestore
             firestore.collection("transaction")

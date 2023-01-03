@@ -31,13 +31,13 @@ class CategoryAdapter(
         buttonSelected.setBackgroundColor(ContextCompat.getColor(context, R.color.teal_700))
     }
 
-    /*private fun setButton(category: String){
+    fun setButton(category: String){
         listButton.forEach { button ->
             if (button.text.toString().contains(category)){
                 button.setBackgroundColor(ContextCompat.getColor(context, R.color.teal_700))
             }
         }
-    }*/
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

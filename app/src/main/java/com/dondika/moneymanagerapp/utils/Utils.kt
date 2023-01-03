@@ -16,13 +16,11 @@ object Utils {
     const val PREF_AVATAR = "pref_avatar"
 
 
-    fun timestampToString(timestamp: Timestamp): String? {
+    fun timestampToString(timestamp: Timestamp?): String {
         return if (timestamp != null){
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
             dateFormat.format(timestamp.toDate())
-        } else {
-            null
-        }
+        } else " "
     }
 
     fun amountFormat(number: Int): String{

@@ -40,7 +40,7 @@ class TransactionAdapter(
             textNote.text = transaction.note
             textCategory.text = transaction.category
             textAmount.text = Utils.amountFormat(transaction.amount)
-            textDate.text = Utils.timestampToString(transaction.created!!)
+            textDate.text = Utils.timestampToString(transaction.created)
 
             container.setOnClickListener {
                 listener?.onClick(transaction)
