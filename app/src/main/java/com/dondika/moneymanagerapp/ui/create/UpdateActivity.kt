@@ -43,10 +43,7 @@ class UpdateActivity : BaseActivity() {
     }
 
 
-
-
     private fun setupListener() {
-
         binding.buttonSave.apply {
             text = "Simpan Perubahan"
             setOnClickListener {

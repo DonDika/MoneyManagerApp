@@ -23,6 +23,14 @@ object Utils {
         } else " "
     }
 
+    fun stringToTimestamp(string: String?): Date? {
+        return if (string != null){
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy hh:mm", Locale.getDefault())
+            dateFormat.parse(string)
+        } else null
+    }
+
+
     fun amountFormat(number: Int): String{
         val numberFormat: NumberFormat = DecimalFormat("#,###")
         return numberFormat.format(number)

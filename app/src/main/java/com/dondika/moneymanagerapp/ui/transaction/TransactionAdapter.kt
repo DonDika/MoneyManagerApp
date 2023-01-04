@@ -59,6 +59,7 @@ class TransactionAdapter(
 
     interface AdapterListener {
         fun onClick(transaction: Transaction)
+        fun onLongClick(transaction: Transaction)
     }
 
 

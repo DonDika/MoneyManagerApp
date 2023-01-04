@@ -1,11 +1,9 @@
 package com.dondika.moneymanagerapp.ui.transaction
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dondika.moneymanagerapp.R
 import com.dondika.moneymanagerapp.databinding.FragmentDateBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.Date
@@ -29,7 +27,6 @@ class DateFragment(var listener: DateListener) : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         setView("Tanggal mulai", "Pilih")
         setupListener()

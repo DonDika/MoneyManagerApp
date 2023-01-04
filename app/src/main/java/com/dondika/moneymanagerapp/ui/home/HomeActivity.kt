@@ -1,5 +1,6 @@
 package com.dondika.moneymanagerapp.ui.home
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -16,6 +17,7 @@ import com.dondika.moneymanagerapp.ui.transaction.TransactionActivity
 import com.dondika.moneymanagerapp.ui.transaction.TransactionAdapter
 import com.dondika.moneymanagerapp.utils.Utils
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -73,9 +75,26 @@ class HomeActivity : BaseActivity() {
                 intent.putExtra("transactionId", transaction.id)
                 startActivity(intent)
             }
+            override fun onLongClick(transaction: Transaction) {
+                val alertDialog = AlertDialog.Builder(this@HomeActivity)
+                alertDialog.apply {
+                    setTitle("Hapus")
+                    setMessage("Hapus ${transaction.note} dari history transaksi?")
+                    setNegativeButton("Batal"){ dialogInterface, _->
+                        dialogInterface.dismiss()
+                    }
+                    setPositiveButton("Hapus"){ dialogInterface, _->
+                        deleteTransaction(transaction.id!!)
+                        dialogInterface.dismiss()
+                    }
+                }
+                alertDialog.show()
+            }
         })
+
         binding.listTransaction.adapter = transactionAdapter
     }
+
 
     private fun getBalance() {
         var totalBalance = 0
@@ -105,8 +124,10 @@ class HomeActivity : BaseActivity() {
         val transactions: ArrayList<Transaction> = arrayListOf()
         //get transaction data from firestore
         firestore.collection("transaction")
+            .orderBy("created", Query.Direction.DESCENDING)
             //ambil semua data di transaction yang sesuai username
             .whereEqualTo("username", pref.getString(Utils.PREF_USERNAME))
+            .limit(5)
             .get()
             .addOnSuccessListener { result ->
                 progress(false)
@@ -142,5 +163,17 @@ class HomeActivity : BaseActivity() {
             binding.listTransaction.visibility = View.VISIBLE
         }
     }
+
+
+    private fun deleteTransaction(id: String) {
+        firestore.collection("transaction")
+            .document(id)
+            .delete()
+            .addOnSuccessListener {
+                getTransaction()
+                getBalance()
+            }
+    }
+
 
 }
